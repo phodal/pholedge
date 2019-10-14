@@ -35,7 +35,7 @@ dependencies {
 
     compileOnly 'org.projectlombok:lombok'
 
-    runtimeOnly 'mysql:mysql-connector-java'
+    compile 'mysql:mysql-connector-java'
 //runtimeOnly('com.h2database:h2')
 
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
@@ -50,11 +50,8 @@ dependencies {
 }
 
 flyway {
-    driver = 'com.mysql.jdbc.Driver'
+    driver = 'com.mysql.cj.jdbc.Driver'
     url = "jdbc:mysql://localhost:3306/pholedge"
     user = 'root'
     password = 'password'
-    table = 'flyway_dev_schema_version'
-    locations = ["filesystem:${projectDir}/src/main/resources/db/migration"]
-    sqlMigrationPrefix = 'MySQL-'
 }
