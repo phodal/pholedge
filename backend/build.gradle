@@ -2,10 +2,7 @@ plugins {
     id 'org.springframework.boot' version '2.1.9.RELEASE'
     id 'io.spring.dependency-management' version '1.0.8.RELEASE'
     id 'java'
-}
-
-allprojects {
-    apply plugin: 'idea'
+    id "org.flywaydb.flyway" version "5.2.4"
 }
 
 group = 'com.phodal'
@@ -33,11 +30,13 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-jersey'
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.0'
 
+    compile "org.flywaydb:flyway-core:5.2.4"
     compile group: 'com.google.guava', name: 'guava', version: '28.0-jre'
 
     compileOnly 'org.projectlombok:lombok'
 
     runtimeOnly 'mysql:mysql-connector-java'
+//runtimeOnly('com.h2database:h2')
 
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.projectlombok:lombok'
@@ -48,4 +47,14 @@ dependencies {
     testImplementation "org.junit.jupiter:junit-jupiter-api"
     testImplementation 'org.junit.jupiter:junit-jupiter-engine'
     testImplementation 'org.mockito:mockito-junit-jupiter:2.26.0'
+}
+
+flyway {
+    driver = 'com.mysql.jdbc.Driver'
+    url = "jdbc:mysql://localhost:3306/pholedge"
+    user = 'root'
+    password = 'password'
+    table = 'flyway_dev_schema_version'
+    locations = ["filesystem:${projectDir}/src/main/resources/db/migration"]
+    sqlMigrationPrefix = 'MySQL-'
 }
