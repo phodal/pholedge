@@ -1,7 +1,7 @@
 package com.phodal.pholedge.book;
 
 import com.phodal.pholedge.book.model.Book;
-import com.phodal.pholedge.mapper.book.BookMapper;
+import com.phodal.pholedge.mapper.BookMapper;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -13,6 +13,6 @@ public class BookRepository {
     }
 
     public void save(Book book) {
-        this.bookMapper.save(book);
+        this.bookMapper.doSave(book);
     }
 }

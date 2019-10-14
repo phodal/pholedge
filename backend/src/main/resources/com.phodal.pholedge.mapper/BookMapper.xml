@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.phodal.pholedge.mapper.book.BookMapper">
-    <select id="save" resultType="com.phodal.pholedge.book.model.Book">
+<mapper namespace="com.phodal.pholedge.mapper.BookMapper">
+    <select id="doSave" resultType="int" parameterType="com.phodal.pholedge.book.model.Book">
         select * from book order by id
     </select>
 </mapper>
