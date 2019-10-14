@@ -10,7 +10,8 @@ import java.util.List;
 
 @Component
 public interface BookMapper {
-    @Insert("INSERT INTO book (id, isbn, name, createdAt) VALUES (#{id}, #{isbn}, #{name}, #{createdAt})")
+    @Insert("INSERT INTO book (id, isbn, name, createdAt) VALUES (#{id}, #{isbn}, #{name}, #{createdAt})" +
+            "ON DUPLICATE KEY UPDATE isbn=#{isbn}, name=#{name}")
     int doSave(Book book);
 
     @Select("select * from book order by id")

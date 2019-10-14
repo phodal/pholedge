@@ -3,9 +3,11 @@ package com.phodal.pholedge.book;
 import com.phodal.pholedge.book.model.Book;
 import com.phodal.pholedge.book.model.BookRepresentaion;
 import com.phodal.pholedge.book.model.command.CreateBookCommand;
+import com.phodal.pholedge.book.model.command.UpdateBookCommand;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Component
@@ -31,6 +33,13 @@ public class BookApplicationService {
 
     public BookRepresentaion getBookById(String id) {
         Book book = bookRepository.byId(id);
+        return book.toRepresentation();
+    }
+
+    public BookRepresentaion updateBook(String id, @Valid UpdateBookCommand command) {
+        Book book = bookRepository.byId(id);
+        book.save(command.getIsbn(), command.getName());
+        bookRepository.save(book);
         return book.toRepresentation();
     }
 }

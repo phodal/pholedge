@@ -29,4 +29,9 @@ public class Book {
     public BookRepresentaion toRepresentation() {
         return new BookRepresentaion(id, name);
     }
+
+    public void save(String isbn, String name) {
+        this.name = name;
+        this.isbn = isbn;
+    }
 }

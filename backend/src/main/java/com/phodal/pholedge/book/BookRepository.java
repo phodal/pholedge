@@ -2,7 +2,9 @@ package com.phodal.pholedge.book;
 
 import com.phodal.pholedge.book.model.Book;
 import com.phodal.pholedge.book.model.BookRepresentaion;
+import com.phodal.pholedge.common.exception.NotFoundException;
 import com.phodal.pholedge.mapper.BookMapper;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -24,6 +26,10 @@ public class BookRepository {
     }
 
     public Book byId(String id) {
-        return this.bookMapper.byId(id);
+        try {
+            return this.bookMapper.byId(id);
+        } catch (EmptyResultDataAccessException e) {
+            throw new NotFoundException(id);
+        }
     }
 }

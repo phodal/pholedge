@@ -2,6 +2,8 @@ package com.phodal.pholedge.book;
 
 import com.phodal.pholedge.book.model.BookRepresentaion;
 import com.phodal.pholedge.book.model.command.CreateBookCommand;
+import com.phodal.pholedge.book.model.command.UpdateBookCommand;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +27,12 @@ public class BookController {
     @ResponseStatus(HttpStatus.CREATED)
     public Map<String, String> createBook(@RequestBody @Valid CreateBookCommand command) {
         return of("id", applicationService.createBook(command));
+    }
+
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public BookRepresentaion updateBook(@PathVariable(name = "id") String id, @RequestBody @Valid UpdateBookCommand command) {
+        return applicationService.updateBook(id, command);
     }
 
     @GetMapping("/")
