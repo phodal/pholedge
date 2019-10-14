@@ -1,16 +1,31 @@
 package com.phodal.pholedge.book;
 
 import com.phodal.pholedge.book.model.BookRepresentaion;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.phodal.pholedge.book.model.command.CreateBookCommand;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import static com.google.common.collect.ImmutableSortedMap.of;
 
 @RestController
 @RequestMapping(value = "/books")
 public class BookController {
+    private final BookApplicationService applicationService;
+
+    public BookController(BookApplicationService applicationService) {
+        this.applicationService = applicationService;
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Map<String, String> createBook(@RequestBody @Valid CreateBookCommand command) {
+        return of("id", applicationService.createBook(command));
+    }
 
     @GetMapping("/")
     public List<BookRepresentaion> getBookList() {
