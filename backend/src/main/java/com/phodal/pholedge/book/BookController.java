@@ -29,9 +29,11 @@ public class BookController {
 
     @GetMapping("/")
     public List<BookRepresentaion> getBookList() {
-        BookRepresentaion bookRepresentaion = new BookRepresentaion("123", "name");
-        List<BookRepresentaion> bookList = new ArrayList<BookRepresentaion>();
-        bookList.add(bookRepresentaion);
-        return bookList;
+        return applicationService.getBooksLists();
+    }
+
+    @GetMapping("/{id}")
+    public BookRepresentaion getBookById(@PathVariable(name = "id") String id) {
+        return applicationService.getBookById(id);
     }
 }

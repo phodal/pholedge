@@ -25,4 +25,8 @@ public class Book {
                 .build();
 
     }
+
+    public BookRepresentaion toRepresentation() {
+        return new BookRepresentaion(id, name);
+    }
 }

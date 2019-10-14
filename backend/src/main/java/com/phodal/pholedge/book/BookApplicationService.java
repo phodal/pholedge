@@ -1,9 +1,12 @@
 package com.phodal.pholedge.book;
 
 import com.phodal.pholedge.book.model.Book;
+import com.phodal.pholedge.book.model.BookRepresentaion;
 import com.phodal.pholedge.book.model.command.CreateBookCommand;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Component
 public class BookApplicationService {
@@ -20,5 +23,14 @@ public class BookApplicationService {
         Book book = bookFactory.create(command.getIsbn(), command.getName());
         bookRepository.save(book);
         return book.getId();
+    }
+
+    public List<BookRepresentaion> getBooksLists() {
+        return bookRepository.list();
+    }
+
+    public BookRepresentaion getBookById(String id) {
+        Book book = bookRepository.byId(id);
+        return book.toRepresentation();
     }
 }
