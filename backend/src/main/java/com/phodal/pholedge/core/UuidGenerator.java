@@ -1,4 +1,4 @@
-package com.phodal.pholedge.common;
+package com.phodal.pholedge.core;
 
 import java.nio.ByteBuffer;
 import java.util.Base64;

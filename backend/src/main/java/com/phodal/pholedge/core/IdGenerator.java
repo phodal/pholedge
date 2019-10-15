@@ -1,4 +1,4 @@
-package com.phodal.pholedge.common;
+package com.phodal.pholedge.core;
 
 import org.springframework.stereotype.Component;
 

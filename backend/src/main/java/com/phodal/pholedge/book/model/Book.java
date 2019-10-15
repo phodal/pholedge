@@ -1,6 +1,5 @@
 package com.phodal.pholedge.book.model;
 
-import com.phodal.pholedge.common.IdGenerator;
 import lombok.Builder;
 import lombok.Getter;
 

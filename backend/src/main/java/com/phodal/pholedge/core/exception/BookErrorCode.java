@@ -1,4 +1,4 @@
-package com.phodal.pholedge.common.exception;
+package com.phodal.pholedge.core.exception;
 
 public enum BookErrorCode implements ErrorCode {
     BOOK_CANNOT_BE_MODIFIED(409, "书引无法变更"),

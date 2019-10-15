@@ -1,4 +1,4 @@
-package com.phodal.pholedge.common.exception;
+package com.phodal.pholedge.core.exception;
 
 public interface ErrorCode {
     int getStatus();

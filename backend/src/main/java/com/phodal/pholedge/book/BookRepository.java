@@ -2,7 +2,8 @@ package com.phodal.pholedge.book;
 
 import com.phodal.pholedge.book.model.Book;
 import com.phodal.pholedge.book.model.BookRepresentaion;
-import com.phodal.pholedge.common.exception.NotFoundException;
+import com.phodal.pholedge.core.domain.Repository;
+import com.phodal.pholedge.core.exception.NotFoundException;
 import com.phodal.pholedge.mapper.BookMapper;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Component;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class BookRepository {
+public class BookRepository implements Repository {
     private final BookMapper bookMapper;
 
     public BookRepository(BookMapper bookMapper) {

@@ -1,7 +1,7 @@
 package com.phodal.pholedge.book;
 
 import com.phodal.pholedge.book.model.Book;
-import com.phodal.pholedge.common.IdGenerator;
+import com.phodal.pholedge.core.IdGenerator;
 import org.springframework.stereotype.Component;
 
 @Component
