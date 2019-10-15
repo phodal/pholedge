@@ -62,7 +62,8 @@ dependencies {
 
     testCompile group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter-test', version: '2.1.0'
 
-    testImplementation 'org.mockito:mockito-junit-jupiter:2.26.0'
+    testCompile group: 'org.mockito', name: 'mockito-core', version: '3.1.0'
+    testImplementation 'org.mockito:mockito-junit-jupiter:3.1.0'
 }
 
 flyway {
