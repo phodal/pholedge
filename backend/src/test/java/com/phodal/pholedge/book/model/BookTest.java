@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BookTest {
-
     @Test
     void should_convert_to_presentation() {
         Book afsBook = Book.create("123", "23424", "afs");
