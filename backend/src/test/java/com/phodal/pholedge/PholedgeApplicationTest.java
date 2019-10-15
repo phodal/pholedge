@@ -1,7 +1,9 @@
 package com.phodal.pholedge;
 
+import com.phodal.pholedge.book.BookController;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -11,8 +13,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 public class PholedgeApplicationTest {
 
+	@Autowired
+	private BookController controller;
+
 	@Test
 	public void contextLoads() {
-		assertThat(1).isEqualTo(1);
+		assertThat(controller).isNotNull();
 	}
 }
