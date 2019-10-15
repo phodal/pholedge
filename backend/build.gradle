@@ -3,6 +3,13 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.8.RELEASE'
     id 'java'
     id "org.flywaydb.flyway" version "5.2.4"
+    id 'checkstyle'
+}
+
+checkstyle {
+    toolVersion = "8.25"
+    ignoreFailures = false
+    showViolations = true
 }
 
 group = 'com.phodal'
