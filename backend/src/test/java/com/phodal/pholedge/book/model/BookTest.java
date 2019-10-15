@@ -13,12 +13,12 @@ class BookTest {
         assertEquals(bookRepresentaion.getId(), afsBook.getId());
         assertEquals(bookRepresentaion.getName(), afsBook.getName());
     }
-//
-//    @Test
-//    void should_save_book() {
-//        Book afsBook = Book.create("123", "23424", "afs");
-//        afsBook.save("phodal", "name");
-//        assertEquals(afsBook.getId(), "phodal");
-//        assertEquals(afsBook.getName(), "name");
-//    }
+
+    @Test
+    void should_save_book() {
+        Book afsBook = Book.create("123", "23424", "afs");
+        afsBook.save("phodal", "name");
+        assertEquals(afsBook.getIsbn(), "phodal");
+        assertEquals(afsBook.getName(), "name");
+    }
 }
