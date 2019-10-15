@@ -44,12 +44,12 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
 
     compile 'mysql:mysql-connector-java'
-//runtimeOnly('com.h2database:h2')
 
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.projectlombok:lombok'
 
 	//test dependencies
+//    runtimeOnly('com.h2database:h2')
 
     testImplementation "org.junit.jupiter:junit-jupiter:5.5.2"
 
@@ -59,6 +59,8 @@ dependencies {
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation "io.rest-assured:spring-mock-mvc"
+
+    testCompile group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter-test', version: '2.1.0'
 
     testImplementation 'org.mockito:mockito-junit-jupiter:2.26.0'
 }
