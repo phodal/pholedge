@@ -58,6 +58,7 @@ repositories {
 dependencyManagement {
     imports {
         mavenBom "org.springframework.cloud:spring-cloud-dependencies:Greenwich.SR3"
+        mavenBom "org.springframework.cloud:spring-cloud-contract-dependencies:2.1.3.RELEASE"
     }
 }
 
@@ -130,6 +131,7 @@ test {
 }
 
 contracts {
+//    testFramework = "JUnit5"
     packageWithBaseClasses = 'pholedge'
     baseClassMappings {
         baseClassMapping(".*book.*", "com.phodal.pholedge.book.BookBase")

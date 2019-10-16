@@ -1,5 +1,6 @@
 package com.phodal.pholedge.book;
 
+import com.phodal.pholedge.PholedgeApplication;
 import com.phodal.pholedge.book.model.Book;
 import io.restassured.module.mockmvc.RestAssuredMockMvc;
 import org.junit.Before;
@@ -11,9 +12,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = BookApplicationService.class)
+@SpringBootTest(classes = PholedgeApplication.class)
 public abstract class BookBase {
-
 	@Autowired
 	BookController bookController;
 
