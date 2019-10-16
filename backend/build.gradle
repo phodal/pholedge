@@ -33,8 +33,8 @@ checkstyle {
 
 group = 'com.phodal'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = JavaVersion.VERSION_11
-targetCompatibility = JavaVersion.VERSION_11
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 configurations {
     developmentOnly
@@ -78,8 +78,19 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
 
     //test dependencies
+    testImplementation(platform("org.junit:junit-bom:5.5.2"))
+
     testImplementation "org.junit.jupiter:junit-jupiter:5.5.2"
-    testImplementation "org.junit.vintage:junit-vintage-engine:5.5.2"
+
+    // JUnit Vintage
+    testCompileOnly('junit:junit:4.12')
+    testRuntimeOnly('org.junit.vintage:junit-vintage-engine:5.5.2') {
+        because 'allows JUnit 3 and JUnit 4 tests to run'
+    }
+
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher") {
+        because 'allows tests to run from IDEs that bundle older version of launcher'
+    }
 
     testImplementation 'com.tngtech.archunit:archunit:0.11.0'
     testImplementation 'com.tngtech.archunit:archunit-junit5-api:0.11.0'
@@ -87,8 +98,8 @@ dependencies {
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.cloud:spring-cloud-starter-contract-verifier'
-//    testImplementation 'org.springframework.cloud:spring-cloud-contract-wiremock'
-//    testImplementation 'org.springframework.cloud:spring-cloud-starter-contract-stub-runner'
+    testImplementation 'org.springframework.cloud:spring-cloud-contract-wiremock'
+    testImplementation 'org.springframework.cloud:spring-cloud-starter-contract-stub-runner'
 
     testImplementation "io.rest-assured:spring-mock-mvc"
 
@@ -106,10 +117,16 @@ flyway {
 }
 
 test {
-    useJUnitPlatform()
+    useJUnitPlatform {
+         includeEngines 'junit-jupiter', 'junit-vintage'
+        // includeTags 'fast'
+        excludeTags 'slow'
+    }
+
     testLogging {
         events 'passed', 'skipped', 'failed'
     }
+
 }
 
 contracts {
