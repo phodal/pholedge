@@ -16,7 +16,7 @@ import java.awt.print.Book;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-class ContractRestClientApplicationTest {
+public class ContractRestTest {
     @Rule
     public StubRunnerRule stubRunnerRule = new StubRunnerRule()
             .downloadStub("com.phodal", "pholedge", "0.0.1-SNAPSHOT", "stubs")

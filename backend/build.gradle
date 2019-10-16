@@ -22,6 +22,8 @@ plugins {
     id 'groovy'
 }
 
+apply plugin: 'spring-cloud-contract'
+
 checkstyle {
     toolVersion = "8.25"
     ignoreFailures = false
