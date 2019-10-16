@@ -112,8 +112,9 @@ test {
     }
 }
 
-//contracts {
-//    baseClassMappings {
-//        baseClassMapping(".*book.", "book.BookBase")
-//    }
-//}
+contracts {
+    packageWithBaseClasses = 'com.phodal.pholedge'
+    baseClassMappings {
+        baseClassMapping(".*book.*", "com.phodal.pholedge.book.BookBase")
+    }
+}
