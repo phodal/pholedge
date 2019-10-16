@@ -1,3 +1,5 @@
+package book
+
 import org.springframework.cloud.contract.spec.Contract
 
 Contract.make {
@@ -14,7 +16,6 @@ Contract.make {
             contentType applicationJson()
         }
         body (
-                id: 1,
                 name: "foo",
                 isbn: "bee"
         )

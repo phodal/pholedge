@@ -111,3 +111,9 @@ test {
         events 'passed', 'skipped', 'failed'
     }
 }
+
+//contracts {
+//    baseClassMappings {
+//        baseClassMapping(".*book.", "book.BookBase")
+//    }
+//}
