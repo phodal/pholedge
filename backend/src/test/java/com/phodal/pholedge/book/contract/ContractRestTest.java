@@ -1,6 +1,7 @@
 package com.phodal.pholedge.book.contract;
 
 
+import com.phodal.pholedge.book.model.Book;
 import org.assertj.core.api.BDDAssertions;
 import org.junit.Rule;
 import org.junit.jupiter.api.Test;
@@ -12,14 +13,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestTemplate;
 
-import java.awt.print.Book;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ContractRestTest {
     @Rule
     public StubRunnerRule stubRunnerRule = new StubRunnerRule()
-            .downloadStub("com.phodal", "pholedge", "0.0.1-SNAPSHOT", "stubs")
+            .downloadStub("com.phodal:pholedge")
             .withPort(8100)
             .stubsMode(StubRunnerProperties.StubsMode.LOCAL);
 
