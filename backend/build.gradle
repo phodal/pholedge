@@ -20,6 +20,7 @@ plugins {
     id "org.flywaydb.flyway" version "5.2.4"
     id 'checkstyle'
     id 'groovy'
+    id 'maven'
 }
 
 apply plugin: 'spring-cloud-contract'
@@ -56,7 +57,7 @@ repositories {
 
 dependencyManagement {
     imports {
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:Greenwich.SR1"
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:Greenwich.SR3"
     }
 }
 
@@ -77,24 +78,23 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
 
     //test dependencies
-//    runtimeOnly('com.h2database:h2')
-
     testImplementation "org.junit.jupiter:junit-jupiter:5.5.2"
+    testImplementation "org.junit.vintage:junit-vintage-engine:5.5.2"
 
     testImplementation 'com.tngtech.archunit:archunit:0.11.0'
     testImplementation 'com.tngtech.archunit:archunit-junit5-api:0.11.0'
     testRuntimeOnly 'com.tngtech.archunit:archunit-junit5-engine:0.11.0'
 
-    testCompile 'org.springframework.cloud:spring-cloud-starter-contract-verifier'
-    testCompile 'org.springframework.cloud:spring-cloud-contract-wiremock'
-    testCompile 'org.springframework.cloud:spring-cloud-starter-contract-stub-runner'
-
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.cloud:spring-cloud-starter-contract-verifier'
+//    testImplementation 'org.springframework.cloud:spring-cloud-contract-wiremock'
+//    testImplementation 'org.springframework.cloud:spring-cloud-starter-contract-stub-runner'
+
     testImplementation "io.rest-assured:spring-mock-mvc"
 
-    testCompile group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter-test', version: '2.1.0'
+    testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:2.1.0'
 
-    testCompile group: 'org.mockito', name: 'mockito-core', version: '3.1.0'
+    testImplementation 'org.mockito:mockito-core:3.1.0'
     testImplementation 'org.mockito:mockito-junit-jupiter:3.1.0'
 }
 
@@ -113,7 +113,7 @@ test {
 }
 
 contracts {
-    packageWithBaseClasses = 'com.phodal.pholedge'
+    packageWithBaseClasses = 'pholedge'
     baseClassMappings {
         baseClassMapping(".*book.*", "com.phodal.pholedge.book.BookBase")
     }

@@ -22,6 +22,7 @@ public abstract class BookBase {
 
 	@Before
     public void setup() {
+		System.out.println("hello, world------------s");
 		RestAssuredMockMvc.standaloneSetup(bookController);
 
 		Mockito.when(bookApplicationService.getBookById("123"))

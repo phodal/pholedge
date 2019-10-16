@@ -3,10 +3,10 @@ package book
 import org.springframework.cloud.contract.spec.Contract
 
 Contract.make {
-    description "should able find book by id"
+    description "should able find book by"
 
     request {
-        url "/books/1"
+        url "/books/123"
         method GET()
     }
 
@@ -16,8 +16,8 @@ Contract.make {
             contentType applicationJson()
         }
         body (
-                name: "foo",
-                isbn: "bee"
+                name: "bee",
+                isbn: "foo"
         )
     }
 }
