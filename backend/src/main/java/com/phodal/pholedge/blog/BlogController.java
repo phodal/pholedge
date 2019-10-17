@@ -1,6 +1,7 @@
 package com.phodal.pholedge.blog;
 
-import com.phodal.pholedge.blog.command.RemoteSaveBlogCommand;
+import com.phodal.pholedge.blog.command.SaveBlogCommand;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -18,7 +19,8 @@ public class BlogController {
     }
 
     @PostMapping("/remoteSave")
-    public Map<String, String> remoteSaveBlog(@RequestBody @Valid RemoteSaveBlogCommand command) {
+    @ResponseStatus(HttpStatus.CREATED)
+    public Map<String, String> remoteSaveBlog(@RequestBody @Valid SaveBlogCommand command) {
         return of("id", applicationService.saveBlog(command));
     }
 }
