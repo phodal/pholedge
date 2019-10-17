@@ -67,6 +67,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-jersey'
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.0'
 
+    implementation('org.springframework.cloud:spring-cloud-starter-openfeign')
+
     compile "org.flywaydb:flyway-core:5.2.4"
     compile group: 'com.google.guava', name: 'guava', version: '28.0-jre'
     compile group: 'org.apache.commons', name: 'commons-collections4', version: '4.4'
