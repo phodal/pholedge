@@ -10,8 +10,10 @@ import java.util.Arrays;
 @Component
 public class RemoteBlogRepository implements Repository {
     private RestTemplate restTemplate;
+    private WdsmPlayClient wdsmPlayClient;
 
-    public RemoteBlogRepository() {
+    public RemoteBlogRepository(WdsmPlayClient wdsmPlayClient) {
+        this.wdsmPlayClient = wdsmPlayClient;
         this.restTemplate = new RestTemplate();
     }
 
@@ -24,5 +26,9 @@ public class RemoteBlogRepository implements Repository {
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
 
         return response.getBody();
+    }
+
+    public void getPlayById(String id) {
+        wdsmPlayClient.getPlay(id);
     }
 }

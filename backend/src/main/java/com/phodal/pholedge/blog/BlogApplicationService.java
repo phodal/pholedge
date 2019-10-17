@@ -1,6 +1,7 @@
 package com.phodal.pholedge.blog;
 
 import com.phodal.pholedge.blog.command.SaveBlogCommand;
+import com.phodal.pholedge.blog.command.SavePlayCommand;
 import com.phodal.pholedge.blog.model.Blog;
 import com.phodal.pholedge.blog.repository.BlogRepository;
 import com.phodal.pholedge.blog.repository.RemoteBlogRepository;
@@ -26,5 +27,10 @@ public class BlogApplicationService {
         Blog blog = blogFactory.create(command.getUrl(), command.getTitle(), content);
         blogRepository.save(blog);
         return blog.getId();
+    }
+
+    String savePlay(@Valid SavePlayCommand command) {
+        remoteBlogRepository.getPlayById(command.getId());
+        return "null";
     }
 }
