@@ -1,4 +1,4 @@
-package com.phodal.pholedge.blog;
+package com.phodal.pholedge.blog.repository;
 
 import com.phodal.pholedge.blog.model.Blog;
 import com.phodal.pholedge.core.domain.Repository;
