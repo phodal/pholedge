@@ -27,8 +27,8 @@ public class BlogApplicationService {
         headers.add("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36");
         HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
 
-        ResponseEntity<String> response = restTemplate.exchange("https://www.wandianshenme.com/api/play/195/", HttpMethod.GET, entity, String.class);
-        Blog blog = blogFactory.create("", response.getBody());
+        ResponseEntity<String> response = restTemplate.exchange(command.getUrl(), HttpMethod.GET, entity, String.class);
+        Blog blog = blogFactory.create(command.getUrl(), response.getBody());
         return blog.getId();
     }
 }
