@@ -1,5 +1,6 @@
 package com.phodal.pholedge.blog.repository;
 
+import com.phodal.pholedge.blog.model.WdsmPlay;
 import com.phodal.pholedge.core.domain.Repository;
 import org.springframework.http.*;
 import org.springframework.stereotype.Component;
@@ -28,7 +29,7 @@ public class RemoteBlogRepository implements Repository {
         return response.getBody();
     }
 
-    public void getPlayById(String id) {
-        wdsmPlayClient.getPlay(id);
+    public WdsmPlay getPlayById(String id) {
+        return wdsmPlayClient.getPlay(id);
     }
 }

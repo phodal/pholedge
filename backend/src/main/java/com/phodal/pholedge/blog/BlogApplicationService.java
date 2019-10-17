@@ -3,9 +3,11 @@ package com.phodal.pholedge.blog;
 import com.phodal.pholedge.blog.command.SaveBlogCommand;
 import com.phodal.pholedge.blog.command.SavePlayCommand;
 import com.phodal.pholedge.blog.model.Blog;
+import com.phodal.pholedge.blog.model.WdsmPlay;
 import com.phodal.pholedge.blog.repository.BlogRepository;
 import com.phodal.pholedge.blog.repository.RemoteBlogRepository;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.validation.Valid;
 
@@ -29,8 +31,11 @@ public class BlogApplicationService {
         return blog.getId();
     }
 
+    @Transactional
     String savePlay(@Valid SavePlayCommand command) {
-        remoteBlogRepository.getPlayById(command.getId());
-        return "null";
+        WdsmPlay play = remoteBlogRepository.getPlayById(command.getId());
+        Blog blog = blogFactory.create(play.getSlug(), play.getTitle(), play.getContent());
+        blogRepository.save(blog);
+        return blog.getId();
     }
 }
