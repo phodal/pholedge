@@ -1,7 +1,6 @@
 package com.phodal.pholedge.blog.repository;
 
 import com.phodal.pholedge.blog.model.WdsmPlay;
-import feign.Headers;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
