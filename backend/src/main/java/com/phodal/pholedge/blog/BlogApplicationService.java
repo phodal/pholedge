@@ -16,8 +16,11 @@ public class BlogApplicationService {
 
     private BlogFactory blogFactory;
 
-    public BlogApplicationService(BlogFactory blogFactory) {
+    private BlogRepository blogRepository;
+
+    public BlogApplicationService(BlogFactory blogFactory, BlogRepository blogRepository) {
         this.blogFactory = blogFactory;
+        this.blogRepository = blogRepository;
         this.restTemplate = new RestTemplate();
     }
 
@@ -28,7 +31,8 @@ public class BlogApplicationService {
         HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
 
         ResponseEntity<String> response = restTemplate.exchange(command.getUrl(), HttpMethod.GET, entity, String.class);
-        Blog blog = blogFactory.create(command.getUrl(), response.getBody());
+        Blog blog = blogFactory.create(command.getUrl(), command.getTitle(), response.getBody());
+        blogRepository.save(blog);
         return blog.getId();
     }
 }

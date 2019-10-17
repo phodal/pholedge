@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.phodal.pholedge.mapper.BlogMapper">
+    <select id="doSave" parameterType="com.phodal.pholedge.blog.model.Blog">
+        INSERT INTO blog (id, title, url, content, indexedAt) VALUES (#{id}, #{title}, #{url}, #{content}, #{indexedAt}) ON DUPLICATE KEY UPDATE title=#{title}, url=#{url}, content=#{content}
+    </select>
+</mapper>

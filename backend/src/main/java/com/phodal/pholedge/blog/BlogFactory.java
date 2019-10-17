@@ -5,6 +5,9 @@ import com.phodal.pholedge.core.IdGenerator;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
 @Component
 public class BlogFactory {
     private final IdGenerator idGenerator;
@@ -13,8 +16,8 @@ public class BlogFactory {
         this.idGenerator = idGenerator;
     }
 
-    public Blog create(String url, String response) {
+    public Blog create(@Valid @NotNull(message = "不能为空") String url, String title, String response) {
         String id = idGenerator.generate();
-        return Blog.create(id, url, response);
+        return Blog.create(id, url, title, response);
     }
 }

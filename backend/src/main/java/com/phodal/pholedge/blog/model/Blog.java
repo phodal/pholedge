@@ -13,17 +13,16 @@ public class Blog {
     private String id;
     private String url;
     private String title;
-    private String description;
     private String content;
-    private String indexedAt;
-    private Instant createdAt;
+    private Instant indexedAt;
 
-    public static Blog create(String id, String url, String response) {
+    public static Blog create(String id, String url, String title, String response) {
         return Blog.builder()
                 .id(id)
                 .url(url)
+                .title(title)
                 .content(response)
-                .createdAt(now())
+                .indexedAt(now())
                 .build();
     }
 }
