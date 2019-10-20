@@ -4,7 +4,7 @@ import com.phodal.pholedge.book.model.Book;
 import com.phodal.pholedge.book.model.BookRepresentaion;
 import com.phodal.pholedge.book.model.command.CreateBookCommand;
 import com.phodal.pholedge.book.model.command.UpdateBookCommand;
-import com.phodal.pholedge.core.domain.ApplicationService;
+import com.phodal.pholedge.core.domain.Service;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,7 +12,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Component
-public class BookService implements ApplicationService {
+public class BookService implements Service {
     private final BookFactory bookFactory;
     private final BookRepository bookRepository;
 

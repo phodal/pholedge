@@ -6,13 +6,14 @@ import com.phodal.pholedge.blog.model.Blog;
 import com.phodal.pholedge.blog.model.WdsmPlay;
 import com.phodal.pholedge.blog.repository.BlogRepository;
 import com.phodal.pholedge.blog.repository.RemoteBlogRepository;
+import com.phodal.pholedge.core.domain.Service;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.validation.Valid;
 
 @Component
-public class BlogService {
+public class BlogService implements Service {
     private BlogFactory blogFactory;
 
     private BlogRepository blogRepository;
