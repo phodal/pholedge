@@ -18,14 +18,14 @@ public abstract class BookBase {
 	BookController bookController;
 
 	@MockBean
-    BookApplicationService bookApplicationService;
+    BookService bookService;
 
 	@Before
     public void setup() {
 		System.out.println("hello, world------------s");
 		RestAssuredMockMvc.standaloneSetup(bookController);
 
-		Mockito.when(bookApplicationService.getBookById("123"))
+		Mockito.when(bookService.getBookById("123"))
 				.thenReturn(Book.create("123", "foo", "bee").toRepresentation());
 	}
 

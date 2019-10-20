@@ -12,11 +12,11 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Component
-public class BookApplicationService implements ApplicationService {
+public class BookService implements ApplicationService {
     private final BookFactory bookFactory;
     private final BookRepository bookRepository;
 
-    public BookApplicationService(BookFactory bookFactory, BookRepository bookRepository) {
+    public BookService(BookFactory bookFactory, BookRepository bookRepository) {
         this.bookFactory = bookFactory;
         this.bookRepository = bookRepository;
     }

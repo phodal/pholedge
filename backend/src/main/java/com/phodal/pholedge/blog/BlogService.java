@@ -12,13 +12,13 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.validation.Valid;
 
 @Component
-public class BlogApplicationService {
+public class BlogService {
     private BlogFactory blogFactory;
 
     private BlogRepository blogRepository;
     private RemoteBlogRepository remoteBlogRepository;
 
-    public BlogApplicationService(BlogFactory blogFactory, BlogRepository blogRepository, RemoteBlogRepository remoteBlogRepository) {
+    public BlogService(BlogFactory blogFactory, BlogRepository blogRepository, RemoteBlogRepository remoteBlogRepository) {
         this.blogFactory = blogFactory;
         this.blogRepository = blogRepository;
         this.remoteBlogRepository = remoteBlogRepository;

@@ -15,9 +15,9 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-class BookApplicationServiceTest {
+class BookServiceTest {
     @InjectMocks
-    private BookApplicationService applicationService;
+    private BookService applicationService;
 
     @Mock
     BookRepository bookRepository;

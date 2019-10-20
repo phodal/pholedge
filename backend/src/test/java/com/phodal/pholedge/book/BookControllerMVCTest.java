@@ -23,7 +23,7 @@ class BookControllerMVCTest {
     private MockMvc mockMvc;
 
     @MockBean
-    private BookApplicationService applicationService;
+    private BookService applicationService;
 
     @Test
     public void should_return_default_data() throws Exception {

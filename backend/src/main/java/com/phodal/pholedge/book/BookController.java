@@ -15,9 +15,9 @@ import static com.google.common.collect.ImmutableSortedMap.of;
 @RestController
 @RequestMapping(value = "/books")
 public class BookController {
-    private final BookApplicationService applicationService;
+    private final BookService applicationService;
 
-    public BookController(BookApplicationService applicationService) {
+    public BookController(BookService applicationService) {
         this.applicationService = applicationService;
     }
 
