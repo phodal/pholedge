@@ -74,6 +74,9 @@ dependencies {
     compile group: 'org.apache.commons', name: 'commons-collections4', version: '4.4'
 
     compileOnly 'org.projectlombok:lombok'
+    // https://mvnrepository.com/artifact/com.netflix.feign/feign-gson
+    compile group: 'com.netflix.feign', name: 'feign-gson', version: '8.18.0'
+
 
     compile 'mysql:mysql-connector-java'
 

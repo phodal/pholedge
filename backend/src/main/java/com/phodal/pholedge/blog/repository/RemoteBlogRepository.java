@@ -1,7 +1,10 @@
 package com.phodal.pholedge.blog.repository;
 
 import com.phodal.pholedge.blog.model.WdsmPlay;
+import com.phodal.pholedge.common.StashErrorDecoder;
 import com.phodal.pholedge.core.domain.Repository;
+import feign.Feign;
+import feign.gson.GsonDecoder;
 import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -11,10 +14,8 @@ import java.util.Arrays;
 @Component
 public class RemoteBlogRepository implements Repository {
     private RestTemplate restTemplate;
-    private WdsmPlayClient wdsmPlayClient;
 
-    public RemoteBlogRepository(WdsmPlayClient wdsmPlayClient) {
-        this.wdsmPlayClient = wdsmPlayClient;
+    public RemoteBlogRepository() {
         this.restTemplate = new RestTemplate();
     }
 
@@ -30,6 +31,11 @@ public class RemoteBlogRepository implements Repository {
     }
 
     public WdsmPlay getPlayById(String id) {
-        return wdsmPlayClient.getPlay(id);
+        WdsmPlayClient client = Feign.builder()
+                .decoder(new GsonDecoder())
+                .errorDecoder(new StashErrorDecoder())
+                .target(WdsmPlayClient.class, "https://www.wandianshenme.com/");
+
+        return client.getPlay(id);
     }
 }

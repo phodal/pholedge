@@ -1,13 +1,12 @@
 package com.phodal.pholedge.blog.repository;
 
 import com.phodal.pholedge.blog.model.WdsmPlay;
-import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import feign.Headers;
+import feign.Param;
+import feign.RequestLine;
 
-@FeignClient(value = "blog",  url = "https://www.wandianshenme.com/")
+@Headers("user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36")
 public interface WdsmPlayClient {
-    @RequestMapping(method = RequestMethod.GET, value = "/api/play/{playId}/")
-    WdsmPlay getPlay(@PathVariable("playId") String playId);
+    @RequestLine("GET /api/play/{playId}/")
+    WdsmPlay getPlay(@Param("playId") String playId);
 }

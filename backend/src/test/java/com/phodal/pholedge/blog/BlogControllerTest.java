@@ -48,4 +48,21 @@ class BlogControllerTest {
                 .andExpect(content().string("{\"id\":\"213\"}"));
     }
 
+    @Test
+    public void should_return_empty_when_error_id() throws Exception {
+        Blog blog = Blog.create("213", "https://www.phodal.com", "title", "json");
+//        given(blogService.savePlay(any())).willReturn(blog.getId());
+
+        SavePlayCommand savePlayCommand = new SavePlayCommand("222", "234");
+
+        this.mockMvc.perform(
+                post("/blogs/savePlay")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .characterEncoding("utf-8")
+                        .content(PholedgeTestUtils.asJsonString(savePlayCommand))
+        )
+                .andExpect(status().isCreated())
+                .andExpect(content().string("{\"id\":\"213\"}"));
+    }
+
 }
