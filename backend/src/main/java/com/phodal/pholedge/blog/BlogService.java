@@ -25,6 +25,7 @@ public class BlogService implements Service {
         this.remoteBlogRepository = remoteBlogRepository;
     }
 
+    @Transactional
     String saveBlog(@Valid SaveBlogCommand command) {
         String content = remoteBlogRepository.getBlogByUrl(command.getUrl());
         Blog blog = blogFactory.create(command.getUrl(), command.getTitle(), content);
